@@ -172,6 +172,9 @@ varargs int do_saving_throw(object player, string type, int mod);
 void set_spell_domain(string domain);
 string get_spell_domain();
 
+// what level is the spell in a given domain?
+int query_domain_spell_level(string domain);
+
 // New saving throw
 varargs int do_save(object targ, int mod);
 
@@ -806,7 +809,6 @@ void wizard_interface(object user, string type, string targ)
         break;
     }
 
-
     if (spell_type == "psion") {
         psyclass = "psion"; altclass = "psywarrior";
     }
@@ -844,10 +846,28 @@ void wizard_interface(object user, string type, string targ)
 
     casting_level = query_spell_level(spell_type);
 
+
+    // inquisitor casting a domain spell?
+    if (!casting_level && type == "inquisitor" && TO->query_domains()) {      
+        int domain_level=0;
+        string domain;
+	tell_object(user, "sorting out inquisitor domain\n");
+        foreach(domain in TO->query_domains()) {
+	  tell_object(user, "in the " + domain + " domain.");
+            if(member_array(domain, user->query_divine_domain()) != -1) {
+	      tell_object(user, "Okay do you have this domain?");
+                domain_level = member_array(TO->query_spell_name(), MAGIC_SS_D->query_domain_spells(domain))+1;
+		tell_object(user, "okay it is is level" + domain_level);
+            }
+        }
+
+        if (domain_level > 0) casting_level = domain_level;
+    }
+    
     if (!casting_level) {
-        tell_object(user, "The " + spell_type + " class cannot cast such a spell!\n");
-        TO->remove();
-        return;
+      tell_object(user, "The " + spell_type + " class cannot cast such a spell!\n");
+      TO->remove();
+      return;
     }
 
     if (!user) {
@@ -1272,7 +1292,9 @@ void wizard_interface(object user, string type, string targ)
     }
 
     if (!preserve_in_memory) {
+      tell_object(user,"DEBUG: " + spell_type +" | " + improv);
         if (!caster->check_memorized(spell_type, improv)) {
+            tell_object(user, "DEBUG: preserve in memory check\n");
             tell_object(caster, "You cannot " + whatdo + " this " + whatsit + " at this time.");
             TO->remove();
             return;
@@ -3661,6 +3683,12 @@ void help()
 int query_has_been_cast()
 {
     return hasBeenCast;
+}
+
+// Return the level of a spell in a given domain.
+// Return 0 if not a spell of that domain.
+int query_domain_spell_level(string domain) {
+  return member_array(TO->query_spell_name(), MAGIC_SS_D->query_domain_spells(domain))+1;
 }
 
 int save_me(string file)

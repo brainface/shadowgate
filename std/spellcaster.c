@@ -812,7 +812,7 @@ mapping query_mastered_bonus()
         mydomains = TO->query_divine_domain();
         foreach(mydomain in mydomains) {
             if (stringp(mydomain)) {
-                tmp["inquisitor"] = MAGIC_SS_D->query_domain_spells(mydomain);;
+                tmp["inquisitor"] = MAGIC_SS_D->query_domain_spells(mydomain)[0..5];
             }
         }
     }

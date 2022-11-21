@@ -73,7 +73,7 @@ string requirements() { // string version, maybe we'll need this, maybe not, can
     string str;
     str = "Prerequisites:\n"
         "    20 Base Class Levels\n"
-        "    Dwarf or Eath Genasi Subrace Race (human, half-elf, half-orc)\n";
+        "    Dwarf or Earth Genasi Subrace Race (human, half-elf, half-orc)\n";
     return str;
 }
 

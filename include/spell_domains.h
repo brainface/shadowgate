@@ -15,4 +15,6 @@
  "nimnavanon" : ({ "storms", "plant", "animal", "earth", "plague", }) , \
  "seija" : ({ "elements", "sun", "moon", "water", "law", }) , \
  "the faceless one" : ({ "illusion", "cavern", "darkness", "madness", "evil", }) , \
+    "the many headed mongrel" : ({ "protection", "madness", "vigilance", "repose", "undeath", "animal"}), \
+    "maostaphulus" : ({ "animal", "trickery", "knowledge", "travel", "charm", "illusion"}), \
 ]))

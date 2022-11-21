@@ -1,0 +1,45 @@
+    // inquisitor casting a domain spell?
+    if (!casting_level && type == "inquisitor" && TO->query_domains()) {      
+        int domain_level=0;
+        string domain;
+	tell_object(user, "sorting out inquisitor domain\n");
+        foreach(domain in TO->query_domains()) {
+	  tell_object(user, "in the " + domain + " domain.");
+            if(member_array(domain, user->query_divine_domain()) != -1) {
+	      tell_object(user, "Okay do you have this domain?");
+                domain_level = member_array(TO->query_spell_name(), MAGIC_SS_D->query_domain_spells(domain))+1;
+		tell_object(user, "okay it is is level" + domain_level);
+            }
+        }
+        if (domain_level > 0) casting_level = domain_level;
+    }
+
+
+//
+// Return the level of a spell in a given domain.
+// Return 0 if not a spell of that domain.
+//
+int query_domain_spell_level(string domain, string spell_name) {
+  return member_array(spell_name, MAGIC_SS_D->query_domain_spells(domain))+1;
+}
+
+/*
+ * Return the level of a domain spell the caster is casting
+ * For spontaneous domain casters (inquisitor)
+ * Always returns highest found level, in case of multiple.
+ */
+int query_is_caster_domain_spell(string spell_name) {
+  int spell_level = 0;
+  int domain_level = 0;
+  
+  foreach(domain in TO->query_domains()) {
+    if(member_array(domain, user->query_divine_domain()) != -1) {
+      domain_level = query_domain_spell_level(domain, spell_name);
+      if (domain_level > spell_level) {
+        spell_level = domain_level;
+      }
+    }
+  }
+
+  return spell_level;
+}

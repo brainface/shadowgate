@@ -14,12 +14,12 @@ int* age_brackets()
 
 int* restricted_alignments(string subrace)
 {
-    return ({ 1, 2, 4, 5, 7, 8});
+    return ({ });
 }
 
 string* restricted_classes(string subrace)
 {
-    return ({ "paladin",});
+    return ({ });
 }
 
 // this only affects rolling in creation; does not prevent dedication to a deity in-game, to allow for character evolution. N, 3/16.
@@ -31,12 +31,29 @@ string* restricted_deities(string subrace)
 // stats in order: str, dex, con, int, wis, cha
 int* stat_mods(string subrace)
 {
-    return ({ -2, 2, 0, 2, 0, 0 });
+    if (!subrace || subrace == "") {
+      return ({ -2, 2, 0, 2, 0, 0 });
+    }
+
+    switch(subrace)
+    {
+    case "infrattan": return ({ 0, 0, 2, 0, 2, -2 }); break;
+    case "rattalion": return ({ 6, -2, 2, -2, -2, 0 }); break;
+    case "regimous": return ({ 0, 2, -2, 0, 0, 0 }); break;
+    default:         return ({ -2, 2, 0, 2, 0, 0 });
+    }
 }
 
 mapping skill_mods(string subrace)
 {
-    return ([ "stealth" : 2, "perception" : 2,"survival":2]);
+  if (subrace == "rattalion") {
+    return ([ "athletics" : 2, "endurance" : 2, "survival" : 2]);
+  } else if (subrace == "infrattan") {
+    return ([ "athletics" : 2, "craft, weaponsmith": 2, "survival" : 2]);
+  }
+
+  // default to regimous
+  return ([ "stealth" : 2, "perception" : 2,"survival":2]);
 }
 
 int natural_AC(string subrace)
@@ -46,7 +63,7 @@ int natural_AC(string subrace)
 
 int sight_bonus(string subrace)
 {
-    return -2;
+    return -1;
 }
 
 mapping daily_uses(string subrace)
@@ -124,30 +141,31 @@ string *limbs() {
                "right leg",
                "right foot",
                "waist",
-               "neck" });
+               "neck",
+               "tail"});
 }
 
 // minimum height for the race = base, max height for the race = base + mod
 int height_base(string gender)
 {
-    return 36;
+    return 35;
 }
 
 int height_mod(string gender)
 {
-    return 10;
+    return 35;
 }
 
 // minimum weight for the race = base, max weight for the race = base + (modifier x height mod)
 // height mod = player height minus base height.
 int weight_base(string gender)
 {
-    return 50;
+    return 40;
 }
 
 int weight_mod(string gender)
 {
-    return 1;
+    return 40;
 }
 
 // used by /daemon/player_d
@@ -200,6 +218,14 @@ string* query_eye_colors(string subrace, int cha)
     choices += ({ "red", "black" });
     return choices;
 }
+
+string* query_subraces(object who)
+{
+    string* subraces;
+    subraces = ({ "rattalion", "infrattan", "regimous"});
+    return subraces;
+}
+
 
 int is_pk_race()
 {
