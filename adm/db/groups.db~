@@ -10,47 +10,47 @@
 # -------------------------------------------------------------
 
 
-(superuser): nienne eris ilmarinen nuwisha yves Guillermo guillermo Administrator
-(assist): Restore eris garrett ilmarinen lujke circe tlaloc tsera yves Guillermo guillermo Administrator
+(superuser): nienne eris ilmarinen nuwisha yves Guillermo guillermo Administrator bob
+(assist): Restore eris garrett ilmarinen lujke circe tlaloc tsera yves Guillermo guillermo Administrator bob
 
-(mudlib): lujke ilmarinen Guillermo guillermo Administrator
-(daemon): ilmarinen lujke circe tsera yves Guillermo guillermo Administrator
+(mudlib): lujke ilmarinen Guillermo guillermo Administrator bob
+(daemon): ilmarinen lujke circe tsera yves Guillermo guillermo Administrator bob
 
 #       misc groups
-(law_c): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator
-(law): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator
-(standard): Standard Guillermo guillermo Administrator
-(classcoding): lujke ilmarinen Guillermo guillermo Administrator
-(tutor): garrett Guillermo guillermo Administrator
+(law_c): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator bob
+(law): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator bob
+(standard): Standard Guillermo guillermo Administrator bob
+(classcoding): lujke ilmarinen Guillermo guillermo Administrator bob
+(tutor): garrett Guillermo guillermo Administrator bob
 
 #       Teams
-(area): chernobog circe ergo essyllis garrett lujke nienne octothorpe titania tlaloc uriel tsera yves hades Guillermo guillermo Administrator
-(help): chernobog kismet titania Guillermo guillermo Administrator
+(area): chernobog circe ergo essyllis garrett lujke nienne octothorpe titania tlaloc uriel tsera yves hades Guillermo guillermo Administrator bob
+(help): chernobog kismet titania Guillermo guillermo Administrator bob
 
 #	Class coding teams
 #       (with write access to certain /cmds and /std dirs)
-(usercmd): garrett nienne lujke tlaloc titania hades Guillermo guillermo Administrator
+(usercmd): garrett nienne lujke tlaloc titania hades Guillermo guillermo Administrator bob
 
 #       Areas of the game (/d)
-(attaya): lujke Guillermo guillermo Administrator
-(barrier): nienne Guillermo guillermo Administrator
-(daggermarsh): aurgloroasa Guillermo guillermo Administrator
-(magic): aurgloroasa titania tlaloc Guillermo guillermo Administrator
-(newbie): garrett titania Guillermo guillermo Administrator
-(shadow): titania chernobog Guillermo guillermo Administrator
-(underdark): aurgloroasa Guillermo guillermo Administrator
+(attaya): lujke Guillermo guillermo Administrator bob
+(barrier): nienne Guillermo guillermo Administrator bob
+(daggermarsh): aurgloroasa Guillermo guillermo Administrator bob
+(magic): aurgloroasa titania tlaloc Guillermo guillermo Administrator bob
+(newbie): garrett titania Guillermo guillermo Administrator bob
+(shadow): titania chernobog Guillermo guillermo Administrator bob
+(underdark): aurgloroasa Guillermo guillermo Administrator bob
 
-(all): Guillermo guillermo Administrator
-#(mudlib): Guillermo guillermo Administrator
-#(assist): Guillermo guillermo Administrator
-(daemon_adv): Guillermo guillermo Administrator
-(daemonjr): Guillermo guillermo Administrator
-(daemonassist): Guillermo guillermo Administrator                                                        
-#(ArchSave): Guillermo guillermo Administrator
-#(UserSave): Guillermo guillermo Administrator
-#(SaveAccess): Guillermo guillermo Administrator
-#(SecureDaemonSave): Guillermo guillermo Administrator
-#(PostalSave): Guillermo guillermo Administrator
-#(Backbone): Guillermo guillermo Administrator
-#(VoteSave): Guillermo guillermo Administratormo
-#(Stronghold): Guillermo guillermo Administrator
+(all): Guillermo guillermo Administrator bob
+#(mudlib): Guillermo guillermo Administrator bob
+#(assist): Guillermo guillermo Administrator bob
+(daemon_adv): Guillermo guillermo Administrator bob
+(daemonjr): Guillermo guillermo Administrator bob
+(daemonassist): Guillermo guillermo Administrator bob                                                        
+#(ArchSave): Guillermo guillermo Administrator bob
+#(UserSave): Guillermo guillermo Administrator bob
+#(SaveAccess): Guillermo guillermo Administrator bob
+#(SecureDaemonSave): Guillermo guillermo Administrator bob
+#(PostalSave): Guillermo guillermo Administrator bob
+#(Backbone): Guillermo guillermo Administrator bob
+#(VoteSave): Guillermo guillermo Administratormo bob
+#(Stronghold): Guillermo guillermo Administrator bob

@@ -513,6 +513,10 @@ int can_gain_type_feat(object ob, string feat, string feattype)
         MAX_ALLOWED = number_feats(ob, "divinebond", ({ "paladin" }));
         GAINED = ob->query_divinebond_feats_gained();
         break;
+    case "talent":
+        MAX_ALLOWED = number_feats(ob, "talent", TALENTCLASSES);
+        GAINED = ob->query_talent_feats_gained();
+        break;	
     default:
         MAX_ALLOWED = 0;
         GAINED = 0;
@@ -626,6 +630,18 @@ int add_my_feat(object ob, string type, string feat)
             return 1;
         }
         else return 0;
+    case "talent":
+        num = 1;
+        if (gain_feat(ob, type, feat, num))
+        {
+            num = 0;
+            num = ob->query_talent_feats_gained();
+            num += 1;
+            ob->set_talent_feats_gained(num);
+            update_usable(ob);
+            return 1;
+        }
+        else return 0;
     case "divinebond":
         num = 1;
         if (gain_feat(ob, type, feat, num))
@@ -716,6 +732,13 @@ int remove_my_feat(object ob,string feat,int bypass)
         if (!num) num = 0;
         num -= 1;
         ob->set_rage_feats_gained(num);
+        update_usable(ob);
+        return 1;
+    case "talent":
+        num = ob->query_talent_feats_gained();
+        if (!num) num = 0;
+        num -= 1;
+        ob->set_talent_feats_gained(num);
         update_usable(ob);
         return 1;
     case "divinebond":
@@ -1358,6 +1381,9 @@ void set_feats(object ob,string type,mapping feats)
     case "rage":
         ob->set_rage_feats(feats);
         break;
+    case "talent":
+        ob->set_talent_feats(feats);
+        break;
     case "divinebond":
         ob->set_divinebond_feats(feats);
         break;
@@ -1394,6 +1420,9 @@ mapping get_feats(object ob,string type)
         break;
     case "rage":
         feats = ob->query_rage_feats();
+        break;
+    case "talent":
+        feats = ob->query_talent_feats();
         break;
     case "divinebond":
         feats = ob->query_divinebond_feats();
@@ -1624,6 +1653,8 @@ string format_feat(string feat,object targ) {
         tmp = "%^BOLD%^%^YELLOW%^" + level + "%^RESET%^";
     } else if (bought_as_type_feat(feat, targ, "rage")) {
         tmp = "%^BOLD%^%^YELLOW%^" + level + "%^RESET%^";
+    } else if (bought_as_type_feat(feat, targ, "talent")) {
+        tmp = "%^BOLD%^%^YELLOW%^" + level + "%^RESET%^";
     } else if (bought_as_type_feat(feat, targ, "divinebond")) {
         tmp = "%^BOLD%^%^YELLOW%^" + level + "%^RESET%^";
     } else {
@@ -1670,14 +1701,15 @@ void display_feats(object ob,object targ, string mytype)
       case "hybrid": currentlist += SPELLFEATS; currentlist += MELEEFEATS;  break;
       case "arcana": currentlist += MAGUSFEATS;  break;
       case "rage": currentlist += BARBFEATS;  break;
+      case "talent": currentlist += TALENTFEATS; break;
       case "divinebond": currentlist += PALADINFEATS;  break;
       case "general": currentlist += GENERALFEATS; break;
       case "epic": currentlist += EPICFEATS; break;
       case "prestige": currentlist += PRESTIGE_FEATS; break;
       case "custom":
         if(sizeof(targ->query("custom_feat_array"))) currentlist += targ->query("custom_feat_array"); break;
-    case "all": case "allowed": currentlist += SPELLFEATS; currentlist += MELEEFEATS; currentlist += GENERALFEATS; currentlist += MAGUSFEATS; currentlist += BARBFEATS; currentlist += PALADINFEATS; currentlist += EPICFEATS; currentlist += PRESTIGE_FEATS; break;
-    default: currentlist += SPELLFEATS; currentlist += MELEEFEATS; currentlist += GENERALFEATS; currentlist += MAGUSFEATS; currentlist += BARBFEATS; currentlist += PALADINFEATS; currentlist += EPICFEATS; currentlist += PRESTIGE_FEATS; break;
+    case "all": case "allowed": currentlist += SPELLFEATS; currentlist += MELEEFEATS; currentlist += GENERALFEATS; currentlist += MAGUSFEATS; currentlist += BARBFEATS; currentlist += PALADINFEATS; currentlist += EPICFEATS; currentlist += PRESTIGE_FEATS; currentlist += TALENTFEATS; break;
+    default: currentlist += SPELLFEATS; currentlist += MELEEFEATS; currentlist += GENERALFEATS; currentlist += MAGUSFEATS; currentlist += BARBFEATS; currentlist += PALADINFEATS; currentlist += EPICFEATS; currentlist += PRESTIGE_FEATS; currentlist += TALENTFEATS; break;
     }
 
     if (!targ->is_class("bard") && !avatarp(targ)) {
@@ -1703,6 +1735,9 @@ void display_feats(object ob,object targ, string mytype)
     }
     if (!targ->is_class("paladin") && !avatarp(targ)) {
         currentlist -= ({ "DivineBond" });
+    }
+    if (!targ->is_class("bard") && !targ->is_class("thief") && !avatarp(targ)) {
+        currentlist -= ({ "Talent" });
     }
 
     classes = targ->query_classes();
@@ -1848,6 +1883,9 @@ int bought_as_type_feat(string feat, object targ, string feattype) {
         break;
     case "rage":
         type_feats = targ->query_rage_feats();
+        break;
+    case "talent":
+        type_feats = targ->query_talent_feats();
         break;
     case "divinebond":
         type_feats = targ->query_divinebond_feats();
