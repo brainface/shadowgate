@@ -20,36 +20,12 @@ int* age_brackets()
 
 int* restricted_alignments(string subrace)
 {
-    if (!subrace || subrace == "") {
-        return ({ 3, 6, 9 });
-    }
-    if (subrace == "aquatic elf") {
-        return ({ 1, 3, 4, 6, 7, 9 });
-    }
-    if (subrace == "fey'ri") {
-        return ({ 1, 4, 7 });
-    }
-    if (subrace == "szarkai") {
-        return ({ 1, 2, 4, 5, 7, 8 });
-    }
-    return ({ 3, 6, 9 });
+    return ({ });
 }
 
 string* restricted_classes(string subrace)
 {
-    if (!subrace || subrace == "") {
-        return ({ "psion", "psywarrior", "paladin", "monk" });
-    }
-    switch (subrace) {
-    case "aquatic elf": return ({ "paladin", "inquisitor", "cleric" }); break;
-    case "fey'ri": return ({ "psion", "psywarrior", "monk", "druid" }); break;
-    case "sun elf": return ({ "psion", "psywarrior", "monk", "druid" }); break;
-    case "sildruath": return ({ "barbarian", "monk", "paladin", "psion", "psywarrior",}); break;
-    case "szarkai": return ({ "psion", "psywarrior", "paladin", "monk", "druid" }); break;
-    case "wild elf": return ({ "bard", "mage", "magus",  "psion", "psywarrior", "paladin", "monk", "inquisitor" }); break;
-    case "wood elf": return ({ "mage", "magus",  "psion", "psywarrior", "paladin", "monk" }); break;
-    default: return ({ "psion", "psywarrior", "paladin", "monk" }); break;
-    }
+    return ({ });
 }
 
 // this only affects rolling in creation; does not prevent dedication to a deity in-game, to allow for character evolution. N, 3/16.
@@ -375,12 +351,8 @@ string* query_subraces(object who)
 {
     string* subraces;
     subraces = ({ "moon elf", "wood elf", "sun elf" });
-    if (OB_ACCOUNT->is_experienced(who->query_true_name()) ||
-        OB_ACCOUNT->is_high_mortal(who->query_true_name()) ||
-        avatarp(who) ||
-        who->query("is_valid_npc")) {
-        subraces += ({ "wild elf", "fey'ri", "szarkai", "aquatic elf", "sildruath"});
-    }
+    subraces += ({ "wild elf", "fey'ri", "szarkai", "aquatic elf", "sildruath"});
+
     return subraces;
 }
 

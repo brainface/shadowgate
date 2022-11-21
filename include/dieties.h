@@ -14,6 +14,7 @@
  *
  * Clergy must be one step from god's alignment
  */
+
 #define DIETIES (([\
    "callamir":({"Luck/Trickery",({1, 4, 5, 7, 8, 9}),({4, 7, 8})}),\
    "cevahir":({"War/Strategy",({1, 2, 3, 4, 5, 6, 7, 8, 9}),({2, 4, 5, 6, 8})}),\
@@ -27,8 +28,10 @@
    "nimnavanon":({"Forests/Weather",({1, 2, 3, 4, 5, 6, 7, 8, 9}),({2, 4, 5, 6, 8})}), \
    "seija":({"Magic/Knowledge",({1, 2, 3, 4, 5, 6, 8}),({1, 2, 3, 5})}),\
    "the faceless one":({"Murder/Deception",({2, 3, 4, 5, 6, 8, 9}),({3, 5, 6, 9})}),\
+   "the many headed mongrel":({"Spirits/Warding",({1,2,3,4,5,6,7,8,9}),({1,2,3,4,5,6,7,8,9})}), \
+    "maostaphulus":({"Exploration/Curiosity", ({1,2,3,4,5,6,7,8,9}),({1,2,3,4,5,6,7,8,9})}), \
 ]))
 
 #define PANTHEON DIETIES + OCCULT_GODS
 
-#define PALADIN_GODS ({"jarmila", "kreysneothosies", "nilith", "lord shadow", "kismet", "lysara","cevahir","khyron","seija", "nimnavanon"})
+#define PALADIN_GODS ({"maostaphulus", "jarmila", "kreysneothosies", "nilith", "lord shadow", "kismet", "lysara","cevahir","khyron","seija", "nimnavanon", "the many headed mongrel"})

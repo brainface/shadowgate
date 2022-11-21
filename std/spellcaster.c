@@ -807,6 +807,16 @@ mapping query_mastered_bonus()
             tmp["warlock"] += ({ "mending", "minor creation", "command", "clairvoyance", "rope trick", "unseen servant" });
     }
 
+    if (TO->is_class("inquisitor") ) {
+        string *mydomains, mydomain;
+        mydomains = TO->query_divine_domain();
+        foreach(mydomain in mydomains) {
+            if (stringp(mydomain)) {
+                tmp["inquisitor"] = MAGIC_SS_D->query_domain_spells(mydomain)[0..5];
+            }
+        }
+    }
+
     return tmp ? tmp : ([]);
 }
 

@@ -28,12 +28,6 @@ int *restricted_alignments(string subrace) {
 }
 
 string *restricted_classes(string subrace) {
-    switch(subrace) {
-      case "tiefling": return ({ "druid" });
-      case "aasimar": return ({ "druid" });
-      case "dhampir": return ({ "druid" });
-      case "air genasi": case "earth genasi": case "fire genasi": case "water genasi":  return ({ "warlock" });
-    }
     return ({});
 }
 
@@ -368,12 +362,7 @@ string* query_subraces(object who)
 {
     string* subraces;
     subraces = ({ "heartlander", "zin'charu", "aesatri", "attayan", "tsarven", "morinnen", "tonaz'tlacar", "senzokuan", "maalish" });
-    if (OB_ACCOUNT->is_experienced(who->query_true_name()) ||
-        OB_ACCOUNT->is_high_mortal(who->query_true_name()) ||
-        avatarp(who) ||
-        who->query("is_valid_npc")) {
-        subraces += ({ "tiefling", "aasimar", "feytouched", "air genasi", "earth genasi", "fire genasi", "water genasi", "dhampir" });
-    }
+    subraces += ({ "tiefling", "aasimar", "feytouched", "air genasi", "earth genasi", "fire genasi", "water genasi", "dhampir" });
     return subraces;
 }
 

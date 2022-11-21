@@ -82,7 +82,7 @@ int cmd_heal(string str)
     targ_id = targ->query_cap_name();
 
 //    diff = targ->query_level(); //difficulty should not depend on the target's overall level
-    diff = 15; //changing to a static difficulty
+    diff = 10; //changing to a static difficulty
 //    if(!diff) diff = 10;//this is no longer needed with static difficulty
 
     if(!interactive(targ)) { notify_fail("Another bug fixed :)\n"); }
@@ -131,7 +131,7 @@ int cmd_heal(string str)
             tell_room(ETP,"%^BOLD%^%^YELLOW%^The wounds slowly heal!%^RESET%^",TP);
         }
 
-        healed = prof - diff; // to give percentage of max hp healed
+        healed = prof - diff/2; // to give percentage of max hp healed
 //        if(healed > 20) healed = 20; // no greater than 20% of max hp healed in a single use
 // taking this out. Player healing is self-limited at about 50% of max.
 

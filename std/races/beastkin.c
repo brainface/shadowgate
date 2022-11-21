@@ -7,15 +7,15 @@ void create() { ::create(); }
 // age at which each age cat starts: normal, middle, old, venerable
 int *age_brackets() { return ({ 13, 40, 53, 80 }); }
 
-int *restricted_alignments(string subrace) { return ({ 3, 6, 9 }); }
+int *restricted_alignments(string subrace) {return ({}); }
 
 string *restricted_classes(string subrace) {
-    return ({ "paladin", "mage", "magus",  "monk", "psion", "psywarrior", "warlock",});
+    return ({ });
 }
 
 // this only affects rolling in creation; does not prevent dedication to a deity in-game, to allow for character evolution. N, 3/16.
 string *restricted_deities(string subrace) {
-    return ({ "bane","beshaba","cyric","helm","talos","tyr" });
+    return ({ });
 }
 
 // stats in order: str, dex, con, int, wis, cha

@@ -1,0 +1,56 @@
+# /adm/etc/groups.db
+# from the Nightmare Mudlib
+# defines groups of euid's with similar access needs
+# system created by Descartes of Borg 01 august 1993
+# based on security ideas by Cygnus@Synergy
+#
+# file format:
+# (group name): list of members by euid
+# note... a creator's name is the euid for that creator
+# -------------------------------------------------------------
+
+
+(superuser): nienne eris ilmarinen nuwisha yves Guillermo guillermo Administrator
+(assist): Restore eris garrett ilmarinen lujke circe tlaloc tsera yves Guillermo guillermo Administrator
+
+(mudlib): lujke ilmarinen Guillermo guillermo Administrator
+(daemon): ilmarinen lujke circe tsera yves Guillermo guillermo Administrator
+
+#       misc groups
+(law_c): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator
+(law): eris ilmarinen nienne nuwisha garrett circe tsera yves Guillermo guillermo Administrator
+(standard): Standard Guillermo guillermo Administrator
+(classcoding): lujke ilmarinen Guillermo guillermo Administrator
+(tutor): garrett Guillermo guillermo Administrator
+
+#       Teams
+(area): chernobog circe ergo essyllis garrett lujke nienne octothorpe titania tlaloc uriel tsera yves hades Guillermo guillermo Administrator
+(help): chernobog kismet titania Guillermo guillermo Administrator
+
+#	Class coding teams
+#       (with write access to certain /cmds and /std dirs)
+(usercmd): garrett nienne lujke tlaloc titania hades Guillermo guillermo Administrator
+
+#       Areas of the game (/d)
+(attaya): lujke Guillermo guillermo Administrator
+(barrier): nienne Guillermo guillermo Administrator
+(daggermarsh): aurgloroasa Guillermo guillermo Administrator
+(magic): aurgloroasa titania tlaloc Guillermo guillermo Administrator
+(newbie): garrett titania Guillermo guillermo Administrator
+(shadow): titania chernobog Guillermo guillermo Administrator
+(underdark): aurgloroasa Guillermo guillermo Administrator
+
+(all): Guillermo guillermo Administrator
+#(mudlib): Guillermo guillermo Administrator
+#(assist): Guillermo guillermo Administrator
+(daemon_adv): Guillermo guillermo Administrator
+(daemonjr): Guillermo guillermo Administrator
+(daemonassist): Guillermo guillermo Administrator                                                        
+#(ArchSave): Guillermo guillermo Administrator
+#(UserSave): Guillermo guillermo Administrator
+#(SaveAccess): Guillermo guillermo Administrator
+#(SecureDaemonSave): Guillermo guillermo Administrator
+#(PostalSave): Guillermo guillermo Administrator
+#(Backbone): Guillermo guillermo Administrator
+#(VoteSave): Guillermo guillermo Administratormo
+#(Stronghold): Guillermo guillermo Administrator

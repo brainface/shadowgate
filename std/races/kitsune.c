@@ -14,12 +14,12 @@ int* age_brackets()
 
 int* restricted_alignments(string subrace)
 {
-    return ({ 1, 3, 7, 9});
+    return ({ });
 }
 
 string* restricted_classes(string subrace)
 {
-    return ({ "paladin", "inquisitor", "barbarian", "psion", "psywarrior", });
+    return ({  });
 }
 
 string* restricted_deities(string subrace)

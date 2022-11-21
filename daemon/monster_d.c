@@ -388,6 +388,7 @@ mapping load_mons_db(string fromfile)
     string workstr, str;
     mapping work;
     int i, max;
+   
     // Mostly cribbed from /adm/obj/master.c
     work = ([ ]);
     if(!(max=sizeof(lines=explode(read_file(fromfile), "\n"))))

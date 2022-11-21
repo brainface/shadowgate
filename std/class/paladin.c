@@ -16,12 +16,11 @@ string *restricted_classes() {
 }
 
 int *restricted_alignments() {
-    return ({7, 8, 9});
+    return ({});
 }
 
 string *restricted_gods() {
-    return ({ "akadi","anhur","beshaba","cyric","istishia","malar","mask","mielikki","oghma","shaundakul",
-        "talos","tempus","tymora" });
+    return ({ });
 }
 
 string *combat_styles() {

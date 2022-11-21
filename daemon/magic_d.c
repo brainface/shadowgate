@@ -65,6 +65,7 @@ int can_cast(object target, int spell_level, string spell_type, string spell_nam
 
     spell_name = replace_string(spell_name, "_", " ");
     if (!spell_name) {
+        tell_object(target, "That spell has no name.");
         return 0;
     }
 
@@ -122,7 +123,20 @@ int can_cast(object target, int spell_level, string spell_type, string spell_nam
         }
     }
 
+    //tell_object(target, "right above inq block");
+    // inquisitor domain spells
+    if (spell_type == "inquisitor" /*&& spell_level < (target->query_prestige_level("inquisitor")+2) / 3 && spell_level <= 6*/) {
+          tell_object(target, "past 1st if");
+      
+        if (member_array(spell_name, target->query_mastered_spells()) != -1) {
+	      tell_object(target, "returned a 1");
+            return 1;
+        }
+	  tell_object(target, "not returning a 1");
+    }
+
     if (!target->query_memorized(spell_type, spell_name)) {
+        tell_object(target, "You do not have that spell memorized or lack the slots to cast it.");
         if (!(spell_type == "magus" && target->query_property("spell recall"))) {
             return 0;
         }
@@ -130,13 +144,15 @@ int can_cast(object target, int spell_level, string spell_type, string spell_nam
 
     x = target->query_guild_level(spell_type);
     if (x < 1) {
-        return 0;
+      tell_object(target, "You are not of the right guild level.");
+      return 0;
     }
 
     //Checking if discipline spells could actually be mastered and cast at current level
-    if(spell_type == "psion" && spell_level > to_int(ceil(to_float(target->query_prestige_level("psion")) / 2.00)))
+    if(spell_type == "psion" && spell_level > to_int(ceil(to_float(target->query_prestige_level("psion")) / 2.00))) {
+        tell_object(target, "You are not of the right level to manifest that discipline spell.");
         return 0;
-
+    }
     if (spell_type == "monk") {
         if (x >= spell_level) {
             return 1;
