@@ -3105,7 +3105,7 @@ void internal_execute_attack(object who)
 
     if (FEATS_D->usable_feat(who, "combat reflexes") &&
         who->is_ok_armour("thief") &&
-        who->query_attack_counter() == 1 &&
+        /*who->query_attack_counter() == 1 &&*/
         !who->query_casting() &&
         !who->query_paralyzed() && !who->query_tripped()) {
         who->set_property("stabs_available", -1);

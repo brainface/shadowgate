@@ -12,8 +12,7 @@ int *restricted_alignments(string subrace) {
     return ({});
 }
 
-string *restricted_classes(string subrace) { return ({  "paladin" }); }
-
+string *restricted_classes(string subrace) { return ({ }); }
 string *restricted_deities(string subrace) { return ({}); }
 
 // stats in order: str, dex, con, int, wis, cha

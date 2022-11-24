@@ -514,7 +514,7 @@ int can_gain_type_feat(object ob, string feat, string feattype)
         GAINED = ob->query_divinebond_feats_gained();
         break;
     case "talent":
-        MAX_ALLOWED = number_feats(ob, "talent", TALENTCLASSES);
+        MAX_ALLOWED = number_feats(ob, "talent", ({"thief"}) /*TALENTCLASSES*/);
         GAINED = ob->query_talent_feats_gained();
         break;	
     default:
@@ -1960,6 +1960,19 @@ int number_feats(object obj, string category, string* valid_classes) {
                     }
                 }
                 break;
+            case "thief":
+                if (category == "talent") {
+                    if (obj->query_class_level("thief") < 21) {
+                        j = (obj->query_class_level(subset[i]) / 2);
+                    } else {
+                        j = 10 + (((obj->query_class_level(subset[i])) - 16) / 5);
+                    }
+                } else {
+                    if (obj->query_class_level("thief") > 20) {
+                        j = ((obj->query_class_level(subset[i]) - 16) / 5);
+                    }
+                }
+                break;	
             case "paladin":
                 if (category == "divinebond") {
                     if (obj->query_class_level("paladin") > 4) {

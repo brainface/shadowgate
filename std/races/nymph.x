@@ -11,10 +11,10 @@ int query_unbound_age()
     return 1;
 }
 
-int *restricted_alignments(string subrace) { return ({ }) ; }
+int *restricted_alignments(string subrace) { return ({ 1,2,3,5,6,9 }); }
 
 string *restricted_classes(string subrace) {
-      return ({ });
+    return ({  "paladin", "fighter", "barbarian", "psion", "psywarrior", "monk", "ranger" });
 }
 
 // this only affects rolling in creation; does not prevent dedication to a deity in-game, to allow for character evolution. N, 3/16.
@@ -127,8 +127,6 @@ string *query_hair_colors(string subrace) {
     choices += ({"silver", "platinum", "ebony"});
     choices += ({"blue"});
     choices += ({"black","white"});
-    choices += ({"vermillion", "viridian", "orange", "hoary", "sunset red", "sable", "midnight black", "ocean blue", "twilight purple", "azure"});
-    choices += ({"forest green", "autumn orange", });
     return choices;
 }
 
