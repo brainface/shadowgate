@@ -8,8 +8,8 @@ void create() {
    set_light(2);
    set_indoors(0);
    set_temple("the many headed mongrel");
-   set_name("The Cemetery of the Constantly Watching Cur.");
-   set_short("%^BOLD%^%^BLACK%^Shrine of the Ever Slumbering One.%^RESET%^");
+   set_name("The Temple of the Many Headed Mongrel.");
+   set_short("%^BOLD%^%^BLACK%^A Cemetery of the Constantly Watching Cur.%^RESET%^");
    set_long("%^BOLD%^%^WHITE%^An old cemetery lies here, the iron fence surrounding it in ill repair. Several black-robed figures bustle about, tending cookfires, hanging laundry, and other oddly mundane tasks, dodging stray dogs at constant risk of being underfoot.%^RESET%^");
    set_smell("default","The smell of frying meat fills the air.");
    set_listen("default","The silence is broken by the occasional bark of an excited dog.");
